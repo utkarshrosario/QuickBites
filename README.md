@@ -12,8 +12,8 @@ A modern full-stack food delivery application built with React and Node.js.
 
 ## 🛠️ Tech Stack
 
-**Frontend:** React, Vite, Redux Toolkit, Tailwind CSS
-**Backend:** Node.js, Express.js, JWT
+**Frontend:** React, Vite, Redux Toolkit, Tailwind CSS <br>
+**Backend:** Node.js, Express.js, JWT <br>
 **Tools:** Axios, React Router, bcrypt, CORS
 
 ## 🔗 API Endpoints
@@ -29,5 +29,6 @@ A modern full-stack food delivery application built with React and Node.js.
 ---
 
 **QuickBites** - Delicious food delivered fast! 🚚
+
 
 
