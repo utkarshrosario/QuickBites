@@ -14,7 +14,7 @@ A modern full-stack food delivery application built with React and Node.js.
 
 **Frontend:** React, Vite, Redux Toolkit, Tailwind CSS <br>
 **Backend:** Node.js, Express.js, JWT <br>
-**Tools:** Axios, React Router, bcrypt, CORS
+**Tools:** Axios, React Router, CORS
 
 ## 🔗 API Endpoints
 
