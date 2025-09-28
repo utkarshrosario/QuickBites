@@ -1,0 +1,19 @@
+# Railway deployment configuration for QuickBites
+
+[phases.setup]
+nixPkgs = ["nodejs-18_x", "npm-9_x"]
+
+[phases.install]
+cmds = [
+  "npm install -g npm@latest",
+  "cd backend && npm ci",
+  "cd ../frontend && npm ci"
+]
+
+[phases.build]
+cmds = [
+  "cd frontend && npm run build"
+]
+
+[start]
+cmd = "cd backend && npm start"
