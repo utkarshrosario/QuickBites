@@ -12,9 +12,9 @@ A modern full-stack food delivery application built with React and Node.js.
 
 ## 🛠️ Tech Stack
 
-**Frontend:** React, Vite, Redux Toolkit, Tailwind CSS <br>
-**Backend:** Node.js, Express.js, JWT <br>
-**Tools:** Axios, React Router, CORS
+**Frontend:** React, Vite, Redux Toolkit, Tailwind CSS
+**Backend:** Node.js, Express.js, JWT
+**Tools:** Axios, React Router, bcrypt, CORS
 
 ## 🔗 API Endpoints
 
@@ -24,40 +24,7 @@ A modern full-stack food delivery application built with React and Node.js.
 - `POST /api/auth/register` - User registration
 - `POST /api/auth/login` - User login
 - `GET /api/auth/me` - Get current user
-
-## 🚀 Deployment
-
-### Option 1: Vercel + Railway (Recommended)
-
-**Frontend (Vercel):**
-1. Connect your GitHub repository to [vercel.com](https://vercel.com)
-2. Vercel will auto-detect the frontend directory
-3. Add environment variables:
-   ```
-   VITE_API_BASE_URL=https://your-backend.railway.app/api
-   ```
-4. Deploy! Get a `your-app.vercel.app` URL
-
-**Backend (Railway):**
-1. Deploy backend directory to [railway.app](https://railway.app)
-2. Add environment variables:
-   ```
-   NODE_ENV=production
-   JWT_SECRET=your-secret-key
-   ```
-3. Get your backend URL (e.g., `https://your-backend.railway.app`)
-
-### Option 2: Full-Stack Deployment
-
-**Railway (Both Services):**
-- Deploy entire project to Railway
-- Railway handles both frontend and backend
-- Get a single `your-app.railway.app` URL
-
-### Option 3: Other Platforms
-
-**Backend:** Heroku, Render, DigitalOcean
-**Frontend:** Netlify, Firebase Hosting
+- `POST /api/orders` - Place an order
 
 ---
 

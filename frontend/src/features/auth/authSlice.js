@@ -2,9 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 
 const API_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api'
-// Get user from localStorage
-const user = JSON.parse(localStorage.getItem('user'))
-
+const user = JSON.parse(localStorage.getItem('user'));
 const initialState = {
   user: user ? user : null,
   isAuthenticated: !!user,
@@ -16,13 +14,9 @@ export const login = createAsyncThunk(
   'auth/login',
   async ({ email, password }, thunkAPI) => {
     try {
-      const response = await axios.post(`${API_URL}/auth/login`, {
-        email,
-        password,
-      })
-      if (response.data.token) {
-        localStorage.setItem('user', JSON.stringify(response.data))
-      }
+      const response = await axios.post(`${API_URL}/auth/login`, { email, password, })
+      if (response.data.token) localStorage.setItem('user', JSON.stringify(response.data));
+      
       return response.data
     } catch (error) {
       const message = error.response?.data?.message || error.message || 'Login failed'
@@ -35,14 +29,9 @@ export const register = createAsyncThunk(
   'auth/register',
   async ({ name, email, password }, thunkAPI) => {
     try {
-      const response = await axios.post(`${API_URL}/auth/register`, {
-        name,
-        email,
-        password,
-      })
-      if (response.data.token) {
-        localStorage.setItem('user', JSON.stringify(response.data))
-      }
+      const response = await axios.post(`${API_URL}/auth/register`, { name, email, password, })
+      if (response.data.token) localStorage.setItem('user', JSON.stringify(response.data))
+      
       return response.data
     } catch (error) {
       const message = error.response?.data?.message || error.message || 'Registration failed'

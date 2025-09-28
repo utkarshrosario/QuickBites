@@ -105,15 +105,10 @@ router.get('/', async (req, res) => {
     ];
     // Filter mock data based on query parameters
     let filteredRestaurants = [...mockRestaurants];
-    if (category && category !== 'all') {
-      filteredRestaurants = filteredRestaurants.filter(r => r.category === category);
-    }
-    if (rating) {
-      filteredRestaurants = filteredRestaurants.filter(r => r.rating >= parseFloat(rating));
-    }
-    if (deliveryTime) {
-      filteredRestaurants = filteredRestaurants.filter(r => r.deliveryTime <= parseInt(deliveryTime));
-    }
+    if (category && category !== 'all') filteredRestaurants = filteredRestaurants.filter(r => r.category === category);
+    if (rating) filteredRestaurants = filteredRestaurants.filter(r => r.rating >= parseFloat(rating));
+    if (deliveryTime) filteredRestaurants = filteredRestaurants.filter(r => r.deliveryTime <= parseInt(deliveryTime));
+
     if (search) {
       const searchLower = search.toLowerCase();
       filteredRestaurants = filteredRestaurants.filter(r =>
@@ -121,7 +116,6 @@ router.get('/', async (req, res) => {
         r.description.toLowerCase().includes(searchLower)
       );
     }
-    // Sort restaurants
     filteredRestaurants.sort((a, b) => {
       let aValue = a[sortBy];
       let bValue = b[sortBy];
@@ -144,7 +138,6 @@ router.get('/search', async (req, res) => {
   try {
     const { query } = req.query;
     if (!query) return res.status(400).json({ success: false, message: 'Search query is required' });
-
     const searchResults = mockRestaurants.filter(restaurant =>
       restaurant.isActive && (
         restaurant.name.toLowerCase().includes(query.toLowerCase()) ||
@@ -152,7 +145,6 @@ router.get('/search', async (req, res) => {
         restaurant.category.toLowerCase().includes(query.toLowerCase())
       )
     );
-
     res.json({ success: true, data: searchResults });
   } catch (error) {
     res.status(500).json({ success: false, message: 'Error searching restaurants', error: error.message });
@@ -171,12 +163,8 @@ router.get('/categories', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const restaurant = mockRestaurants.find(r => r._id === req.params.id);
-    if (!restaurant) {
-      return res.status(404).json({ success: false, message: 'Restaurant not found' });
-    }
-    if (!restaurant.isActive) {
-      return res.status(404).json({ success: false, message: 'Restaurant is not active' });
-    }
+    if (!restaurant) return res.status(404).json({ success: false, message: 'Restaurant not found' });
+    if (!restaurant.isActive) return res.status(404).json({ success: false, message: 'Restaurant is not active' });
     res.json({ success: true, data: restaurant });
   } catch (error) {
     res.status(500).json({ success: false, message: 'Error fetching restaurant', error: error.message });

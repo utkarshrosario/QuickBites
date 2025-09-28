@@ -1,11 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = {
-  items: [],
-  total: 0,
-  itemCount: 0,
-}
-// Helper function to calculate totals
+const initialState = { items: [], total: 0, itemCount: 0 }
 const calculateTotals = (items) => {
   const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0)
   const itemCount = items.reduce((sum, item) => sum + item.quantity, 0)
@@ -21,14 +16,7 @@ const cartSlice = createSlice({
       if (existingItem) {
         existingItem.quantity += 1
       } else {
-        state.items.push({
-          id,
-          name,
-          price,
-          image,
-          restaurantId,
-          quantity: 1,
-        })
+        state.items.push({ id, name, price, image, restaurantId, quantity: 1 })
       }
       const totals = calculateTotals(state.items)
       state.total = totals.total

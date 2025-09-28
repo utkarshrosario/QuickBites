@@ -6,7 +6,7 @@ import dotenv from 'dotenv';
 import rateLimit from 'express-rate-limit';
 import menuRoutes from './routes/menu.js';
 import restaurantRoutes from './routes/restaurants.js';
-import authRoutes, { authenticateToken } from './routes/auth.js';
+import authRoutes from './routes/auth.js';
 
 dotenv.config();
 const app = express();
@@ -21,29 +21,10 @@ app.use(limiter);
 // CORS configuration
 app.use(cors({
   origin: function (origin, callback) {
-    // Allow requests with no origin (mobile apps, etc.)
     if (!origin) return callback(null, true);
-
-    const allowedOrigins = [
-      'http://localhost:5173',
-      'http://localhost:3000',
-      'http://127.0.0.1:5173',
-      'http://127.0.0.1:3000'
-    ];
-
-    // In production, allow the deployed frontend domain
-    if (process.env.NODE_ENV === 'production') {
-      const productionOrigin = process.env.FRONTEND_URL || process.env.VITE_API_BASE_URL;
-      if (productionOrigin) {
-        allowedOrigins.push(productionOrigin.replace('/api', ''));
-      }
-    }
-
-    if (allowedOrigins.includes(origin)) {
-      return callback(null, true);
-    } else {
-      return callback(new Error('Not allowed by CORS'), false);
-    }
+    const allowedOrigins = ['http://localhost:5173', 'http://localhost:3000', 'http://127.0.0.1:5173', 'http://127.0.0.1:3000'];
+    if (allowedOrigins.includes(origin)) return callback(null, true);
+    else  return callback(new Error('Not allowed by CORS'), false);
   },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
