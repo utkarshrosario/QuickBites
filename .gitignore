@@ -1,0 +1,47 @@
+# Root level files only
+# (Subdirectories have their own .gitignore files)
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE and Editor files
+.vscode/
+.idea/
+
+# Environment files (root level only)
+.env
+.env.local
+.env.*.local
+
+# Build outputs (root level only)
+dist/
+build/
+out/
+
+# Logs (root level only)
+logs/
+*.log
+
+# Cache (root level only)
+.cache/
+.npm/
+
+# Temporary files
+*.tmp
+*.temp
+tmp/
+temp/
+
+# Dependencies (if any at root)
+node_modules/
+
+# Coverage reports
+coverage/
+
+# Deployment
+.vercel/
+.turbo/
+
+# Other root-level files
+.hintrc
