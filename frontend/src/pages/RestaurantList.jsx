@@ -14,7 +14,7 @@ const RestaurantList = () => {
   }, [dispatch])
   const filteredRestaurants = restaurants.filter(restaurant => {
     const matchesSearch = restaurant.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         restaurant.description.toLowerCase().includes(searchTerm.toLowerCase())
+      restaurant.description.toLowerCase().includes(searchTerm.toLowerCase())
     const matchesCategory = selectedCategory === 'all' || restaurant.category === selectedCategory
     return matchesSearch && matchesCategory
   })

@@ -11,6 +11,7 @@ import Register from './pages/Register'
 import RestaurantList from './pages/RestaurantList'
 import RestaurantDetail from './pages/RestaurantDetail'
 import Cart from './pages/Cart'
+import Checkout from './pages/Checkout'
 import Profile from './pages/Profile'
 import Orders from './pages/Orders'
 import NotFound from './pages/NotFound'
@@ -34,6 +35,7 @@ function App() {
           <Route path="/restaurants" element={<RestaurantList />} />
           <Route path="/restaurant/:id" element={<RestaurantDetail />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="*" element={<NotFound />} />

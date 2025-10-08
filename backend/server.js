@@ -7,6 +7,7 @@ import rateLimit from 'express-rate-limit';
 import menuRoutes from './routes/menu.js';
 import restaurantRoutes from './routes/restaurants.js';
 import authRoutes from './routes/auth.js';
+import orderRoutes from './routes/orders.js';
 
 dotenv.config();
 const app = express();
@@ -45,9 +46,7 @@ app.use('/api/users', (req, res) => {
   res.status(501).json({ message: 'User routes not implemented yet' });
 });
 app.use('/api/restaurants', restaurantRoutes);
-app.use('/api/orders', (req, res) => {
-  res.status(501).json({ message: 'Order routes not implemented yet' });
-});
+app.use('/api/orders', orderRoutes);
 // Menu routes
 app.use('/api/menu', menuRoutes);
 app.use('*', (req, res) => {
